@@ -61,3 +61,4 @@ function handleGuess(correctSpot, userGuess) {
     totalEl.textContent = totalGuesses;
     // update the DOM to show this change to the user (including the losses, not tracked directly in state)
 }
+// comment
