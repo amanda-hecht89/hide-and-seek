@@ -8,7 +8,7 @@ const treeContainer = document.getElementById('tree-container');
 const boulderContainer = document.getElementById('boulder-container');
 
 const totalEl = document.getElementById('total');
-const lossesEl = document.getElementById('losses');
+const lossesEl = document.getElementById('lost');
 const winsEl = document.getElementById('wins');
 
 // initialize state
@@ -16,7 +16,6 @@ const hidingPlaces = ['tree', 'shed', 'boulder'];
 
 let correctGuesses = 0;
 let totalGuesses = 0;
-let lossGuesses = 0;
 
 shedButton.addEventListener('click', () => {
     const hidingSpot = Math.floor(Math.random() * 3);
@@ -37,7 +36,7 @@ boulderButton.addEventListener('click', () => {
 });
 
 function handleGuess(correctSpot, userGuess) {
-    console.log(correctSpot);
+    console.log(lossGuesses);
     // reset the styles
     treeContainer.classList.remove('face');
     boulderContainer.classList.remove('face');
@@ -56,9 +55,10 @@ function handleGuess(correctSpot, userGuess) {
     // then if the user guess is correct, increment the correct guesses
     if (correctSpot === userGuess) {
         correctGuesses++;
-    } else {lossGuesses++;}
+    } 
     winsEl.textContent = correctGuesses;
-    lossesEl.textcontent = lossGuesses;
+    console.log(lossesEl);
+    lossesEl.textContent = totalGuesses - correctGuesses;
     totalEl.textContent = totalGuesses;
     // update the DOM to show this change to the user (including the losses, not tracked directly in state)
 }
